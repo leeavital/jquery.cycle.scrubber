@@ -48,9 +48,17 @@ $.fn.scrubber = function(options) {
           });
       
       $(this).css(css).attr('href', o.link || '#');
-    }).bind('mouseup', function(){
-      if ( o.link ) {
-        window.location = o.link;
+    }).bind('mouseup', function( e ){
+      
+
+	  if ( o.link ) {
+		 
+		 // check for control key or middle click
+		 if( e.which == 2 || e.ctrlKey ){
+			window.open( o.link );
+	  	 }else{
+			window.location = o.link;
+		 }
       }
     });
     
